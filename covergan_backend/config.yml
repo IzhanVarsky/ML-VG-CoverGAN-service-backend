@@ -1,5 +1,5 @@
 app:
-  port: 5001
+  port: 1123
   host: "0.0.0.0"
   thread_pool: 5
   log_level: "INFO"

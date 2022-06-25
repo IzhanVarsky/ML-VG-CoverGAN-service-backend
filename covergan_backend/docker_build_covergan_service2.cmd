@@ -1,1 +1,0 @@
-docker build -t covergan_service2 -f ./Dockerfile .

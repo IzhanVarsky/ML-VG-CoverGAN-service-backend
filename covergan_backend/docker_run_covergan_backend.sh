@@ -1,0 +1,1 @@
+docker run --shm-size=2g --rm -p 1123:1123 -v `pwd`:/scratch --user $(id -u):$(id -g) --workdir=/scratch -e HOME=/scratch covergan_backend:latest

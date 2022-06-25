@@ -1,7 +1,5 @@
 FROM python:3.7
 
-EXPOSE 50001
-
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
@@ -31,5 +29,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libmagickwand-dev
 # Install fonts
 COPY ./covergan/fonts /usr/share/fonts
 RUN fc-cache -f -v
+
+EXPOSE 1123
 
 ENTRYPOINT ["./entry.sh"]
