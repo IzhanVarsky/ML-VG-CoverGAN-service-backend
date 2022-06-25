@@ -1,0 +1,6 @@
+[submodule "cover-generator"]
+	path = cover-generator
+	url = https://github.com/dendyGrobovshik/cover-generator/
+[submodule "CoverGAN"]
+	path = CoverGAN
+	url = https://github.com/IzhanVarsky/CoverGAN
