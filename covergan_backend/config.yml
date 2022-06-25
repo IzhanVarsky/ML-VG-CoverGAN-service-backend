@@ -1,0 +1,26 @@
+app:
+  port: 5001
+  host: "0.0.0.0"
+  thread_pool: 5
+  log_level: "INFO"
+service:
+  font_dir: "./covergan/fonts"
+
+  gan_weights_ilya: "./covergan/weights/covergan_ilya.pt"
+  captioner_weights: "./covergan/weights/captioner.pt"
+
+  gan_weights_2: "./covergan/weights/checkpoint_6figs_5depth_512noise.pt"
+
+#  MyGeneratorFixedThreeFigs32:
+  gan_weights_3: "./covergan/dataset_full_covers/checkpoint/cgan_out-640.pt"
+  colorer_weights_gan3: "./covergan/dataset_full_covers/checkpoint/colorer_12_colors_sorted-100.pt"
+
+# MyGeneratorFixedSixFigs32:
+  gan_weights_4: "./covergan/dataset_full_covers/checkpoint/cgan_out-1200.pt"
+  colorer_weights_gan4: "./covergan/dataset_full_covers/checkpoint/colorer_12_colors_sorted-100.pt"
+
+#GeneratorRandFigure:
+  gan_weights_5: "./covergan/dataset_full_covers/checkpoint/checkpoint_hz.pt"
+  colorer_weights_gan5: "./covergan/weights/colorer_12_colors-1800.pt"
+
+  colorer_12_weights: "./covergan/weights/colorer_12_colors-1800.pt"
