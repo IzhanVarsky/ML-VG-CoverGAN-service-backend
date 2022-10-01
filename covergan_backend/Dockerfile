@@ -18,11 +18,8 @@ WORKDIR .
 RUN pip install -r ./requirements_covergan.txt
 RUN pip install -r ./requirements_server.txt
 
-# Clone and build DiffVG
-# If problems with installing or using diffvg, check this issue:
-# https://github.com/BachiLi/diffvg/issues/29#issuecomment-994807865
-RUN git clone --recursive https://github.com/BachiLi/diffvg
-RUN cd diffvg && python setup.py install
+RUN git clone --recursive https://github.com/IzhanVarsky/diffvg2022
+RUN cd diffvg2022 && python setup.py install && cd .. && rm -rf diffvg2022
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libmagickwand-dev
 
