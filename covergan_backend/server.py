@@ -250,6 +250,20 @@ class ApiServerController(object):
             num_samples, use_filters
         )
 
+    @cherrypy.expose
+    @cherrypy.tools.json_out()
+    def diffvg_optimize(self, svg=None):
+        print("svg:", svg)
+        if svg is None:
+            raise cherrypy.HTTPRedirect("/")
+        from diffvg_optim import run_diffvg_optim
+        return {"result": {
+            "svg": svg,
+            "res_svg": run_diffvg_optim(svg)
+        }
+        }
+
+
 if __name__ == '__main__':
     freeze_support()
     cherrypy.tree.mount(ApiServerController(), '/')
