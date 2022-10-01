@@ -14,7 +14,6 @@ import yaml
 from cherrypy import log
 
 from outer.emotions import Emotion, emotion_from_str
-from vector_style_transfer import run_vector_style_transfer
 
 SUPPORTED_EXTENSIONS = {"flac", "mp3", "aiff", "wav", "ogg"}
 
@@ -250,31 +249,6 @@ class ApiServerController(object):
             gen_type, use_captioner,
             num_samples, use_filters
         )
-
-    @cherrypy.expose
-    @cherrypy.tools.json_out()
-    def vector_style_transfer(self, style_svg=None, content_svg=None):
-        print("style_svg:", style_svg)
-        print("content_svg:", content_svg)
-        if style_svg is None or content_svg is None:
-            raise cherrypy.HTTPRedirect("/")
-        with tempfile.NamedTemporaryFile(delete=False) as f:
-            style_svg_tmp_filename = f.name
-            with open(style_svg_tmp_filename, 'w') as f_:
-                f_.write(style_svg)
-        with tempfile.NamedTemporaryFile(delete=False) as f:
-            content_svg_tmp_filename = f.name
-            with open(content_svg_tmp_filename, 'w') as f_:
-                f_.write(content_svg)
-
-        res = {"result": {
-            "res_svg": run_vector_style_transfer(style_svg_tmp_filename, content_svg_tmp_filename)
-        }
-        }
-        os.remove(style_svg_tmp_filename)
-        os.remove(content_svg_tmp_filename)
-        return res
-
 
 if __name__ == '__main__':
     freeze_support()
