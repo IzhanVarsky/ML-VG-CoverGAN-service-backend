@@ -1,10 +1,10 @@
 #project ignored
-covergan_backend/*.zip
-covergan_backend/*.cmd
-covergan_backend/*.json
-covergan_backend/json_output_reader.py
-covergan_backend/test_music.mp3
-covergan_backend/test_server.sh
+*.zip
+*.cmd
+*.json
+json_output_reader.py
+test_music.mp3
+test_server.sh
 
 .idea
 # Byte-compiled / optimized / DLL files

@@ -1,6 +1,3 @@
-[submodule "cover-generator"]
-	path = covergan_frontend
-	url = https://github.com/dendyGrobovshik/cover-generator/
 [submodule "CoverGAN"]
-	path = covergan_backend/covergan
+	path = covergan
 	url = https://github.com/IzhanVarsky/CoverGAN
