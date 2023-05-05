@@ -1,7 +1,5 @@
 # CoverGAN backend service
 
-The backend server is running on CPU on port `9013`.
-
 CoverGAN frontend service is available at http://109.188.135.85:5001/covergan.
 
 ## Weights

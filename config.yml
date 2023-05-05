@@ -1,5 +1,5 @@
 app:
-  port: 9013
+  port: 36001
   host: "0.0.0.0"
   thread_pool: 5
   log_level: "INFO"

@@ -27,6 +27,4 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libmagickwand-dev
 COPY ./covergan/fonts /usr/share/fonts
 RUN fc-cache -f -v
 
-EXPOSE 9013
-
 ENTRYPOINT ["./entry.sh"]

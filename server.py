@@ -12,6 +12,7 @@ import magic
 import psutil
 import yaml
 from cherrypy import log
+from cors_policy import set_cors_policy
 
 from outer.emotions import Emotion, emotion_from_str
 
@@ -76,7 +77,8 @@ def str_to_bool(s: str):
 
 
 class ApiServerController(object):
-    @cherrypy.expose('/health')
+    @set_cors_policy
+    @cherrypy.expose
     @cherrypy.tools.json_out()
     def health(self):
         return {
@@ -88,31 +90,38 @@ class ApiServerController(object):
             }
         }
 
-    @cherrypy.expose('/get_emotions')
+    @set_cors_policy
+    @cherrypy.expose
     @cherrypy.tools.json_out()
     def get_emotions(self):
         return {"emotions": [x.name for x in Emotion]}
 
+    @set_cors_policy
     @cherrypy.expose('/')
     def index(self):
         return open("html/index.html")
 
+    @set_cors_policy
     @cherrypy.expose('/style')
     def style(self):
         return open("html/style-transfer.html")
 
+    @set_cors_policy
     @cherrypy.expose('/raster')
     def raster(self):
         return open("html/rasterize.html")
 
+    @set_cors_policy
     @cherrypy.expose('/color-extractor')
     def color_extractor(self):
         return open("html/color-extractor.html")
 
+    @set_cors_policy
     @cherrypy.expose('/text_paste')
     def text_paste(self):
         return open("html/text-paste.html")
 
+    @set_cors_policy
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def svg_to_json(self, svg=None):
@@ -123,6 +132,7 @@ class ApiServerController(object):
         res_svg_json = SVGContainer.load_svg(svg).to_obj()
         return {"result": res_svg_json}
 
+    @set_cors_policy
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def add_text_svg(self, svg_img=None, artist_name="", track_name=""):
@@ -140,6 +150,7 @@ class ApiServerController(object):
             "png": base64_encode(buffered.getvalue())
         }}
 
+    @set_cors_policy
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def extract_colors(self, img=None, color_count=None, algo_type="1", use_random: str = False):
@@ -162,6 +173,7 @@ class ApiServerController(object):
             random.shuffle(palette)
         return {"result": [list(map(int, x)) for x in palette]}
 
+    @set_cors_policy
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def rasterize(self, svg=None):
@@ -177,6 +189,7 @@ class ApiServerController(object):
         }
         }
 
+    @set_cors_policy
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def style_transfer(self, img_from=None, svg_to=None):
@@ -201,6 +214,7 @@ class ApiServerController(object):
         os.remove(tmp_filename)
         return res
 
+    @set_cors_policy
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def generate(self, audio_file=None, track_artist: str = None,
@@ -250,6 +264,7 @@ class ApiServerController(object):
             num_samples, use_filters
         )
 
+    @set_cors_policy
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def diffvg_optimize(self, svg=None):
@@ -279,7 +294,7 @@ if __name__ == '__main__':
         'tools.encode.encoding': 'utf-8',
         'tools.response_headers.headers': [
             ('Content-Type', 'text/html;encoding=utf-8'),
-            ("Access-Control-Allow-Origin", "*"),
+            # ("Access-Control-Allow-Origin", "*"),
         ],
     })
 
