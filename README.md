@@ -1,6 +1,6 @@
 # CoverGAN backend service
 
-CoverGAN frontend service is available at http://109.188.135.85:5001/covergan.
+CoverGAN frontend service is available at http://81.3.154.178:5001/covergan.
 
 ## Weights
 

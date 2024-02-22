@@ -5,7 +5,9 @@ import cherrypy
 white_hosts = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://109.188.135.85:5001",
+    # "http://109.188.135.85:5001",
+    "http://api.statanly.com:5001",
+    "http://81.3.154.178:5001",
 ]
 
 
